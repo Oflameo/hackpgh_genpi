@@ -1,0 +1,15 @@
+---
+- hosts: '{{hosts}}'
+  remote_user:  '{{user}}'
+  become: True
+  tasks:
+     - name: Update cache
+       apt: 
+        - update_cache: yes
+     - name: Install packages
+       apt: 
+        - name: "{{ package }}"
+        - state: present
+       with_file: 
+        - ../config/package-lists/administration.list.binary
+        - ../config/package-lists/logging.list.binary

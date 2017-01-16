@@ -1,8 +1,12 @@
+acl
 ansible
+apt-file
 dhcpcd5
 emacs
 git
+iproute2
 iptables-persistent
+iw
 ksh
 luajit
 moreutils
@@ -12,10 +16,13 @@ openvpn
 perl
 python
 rsync
+ruby
 sqlite3
 sssd
+sudo-ldap
 tcl
 tmux
 util-linux
 uucp
 vim
+wpasupplicant
