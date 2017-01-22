@@ -1,0 +1,8 @@
+*filter
+:INPUT ACCEPT [0:0]
+-A INPUT -p tcp --dport 22 -j LOG --log-prefix "accept 22 ssh"
+-A INPUT -p tcp --dport 22 -j ACCEPT
+-A INPUT -j DROP
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+COMMIT
