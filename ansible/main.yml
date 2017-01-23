@@ -18,3 +18,15 @@
            state: present
        with_lines:
            - cat ../config/package-lists/logging.list.binary
+    -  name: Install presentation packages
+       apt:
+           name: "{{ item }}"
+           state: present
+       with_lines:
+           - cat ../config/package-lists/presentation.list.binary
+    -  name: Install recoup packages 0
+       apt:
+           name: "{{ item }}"
+           state: present
+       with_lines:
+           - cat ../config/package-lists/recoup.list.binary
