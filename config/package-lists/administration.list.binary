@@ -19,7 +19,7 @@ rsync
 ruby
 sqlite3
 sssd
-sudo-ldap
+sudo
 tcl
 tmux
 util-linux

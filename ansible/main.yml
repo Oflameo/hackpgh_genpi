@@ -6,11 +6,15 @@
     -  name: Update cache
        apt: 
           update_cache: yes
-    -  name: Install packages
+    -  name: Install admin packages
        apt: 
-          name: "{{ package }}"
-          state: present
-          debug: msg = "{{ item }}"
-          with_lines: 
-          cat "../config/package-lists/administration.list.binary"
-          cat "../config/package-lists/logging.list.binary"
+           name: "{{ item }}"
+           state: present
+       with_lines: 
+           - cat ../config/package-lists/administration.list.binary
+    -  name: Install logging packages
+       apt:
+           name: "{{ item }}"
+           state: present
+       with_lines:
+           - cat ../config/package-lists/logging.list.binary
