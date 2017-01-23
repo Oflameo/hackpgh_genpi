@@ -1,15 +1,16 @@
 ---
-- hosts: '{{hosts}}'
-  remote_user:  '{{user}}'
+- hosts: "{{ hosts }}"
+  remote_user:  "{{ user }}"
   become: True
   tasks:
-     - name: Update cache
+    -  name: Update cache
        apt: 
-        - update_cache: yes
-     - name: Install packages
+          update_cache: yes
+    -  name: Install packages
        apt: 
-        - name: "{{ package }}"
-        - state: present
-       with_file: 
-        - ../config/package-lists/administration.list.binary
-        - ../config/package-lists/logging.list.binary
+          name: "{{ package }}"
+          state: present
+          debug: msg = "{{ item }}"
+          with_lines: 
+          cat "../config/package-lists/administration.list.binary"
+          cat "../config/package-lists/logging.list.binary"
