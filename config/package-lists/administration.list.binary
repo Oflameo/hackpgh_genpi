@@ -11,6 +11,7 @@ iw
 ksh
 luajit
 moreutils
+netselect-apt
 openssh-server
 openssl
 openvpn
