@@ -1,7 +1,6 @@
 acl
 ansible
 apt-file
-certbot
 dhcpcd5
 emacs
 git

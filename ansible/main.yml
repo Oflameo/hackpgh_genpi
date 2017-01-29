@@ -3,6 +3,13 @@
   remote_user:  "{{ user }}"
   become: True
   tasks:
+    -  name: Set sources
+       copy:
+          src: ../config/includes.chroot/etc/apt/sources.list
+          dest: /etc/apt/sources.list
+          owner: root
+          group: root
+          mode: 0644
     -  name: Update cache
        apt: 
           update_cache: yes
@@ -24,7 +31,7 @@
            state: present
        with_lines:
            - cat ../config/package-lists/presentation.list.binary
-    -  name: Install recoup packages 0
+    -  name: Install recoup packages
        apt:
            name: "{{ item }}"
            state: present
