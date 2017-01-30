@@ -10,9 +10,18 @@
           owner: root
           group: root
           mode: 0644
-    -  name: Update cache
+    -  name: Get debian apt-key
+       apt_key: 
+          url: https://ftp-master.debian.org/keys/archive-key-8.asc
+          state: present
+    -  name: Get debian security apt-key
+       apt_key: 
+          url: https://ftp-master.debian.org/keys/archive-key-8-security.asc
+          state: present
+    -  name: Update
        apt: 
           update_cache: yes
+          upgrade: safe
     -  name: Install admin packages
        apt: 
            name: "{{ item }}"
@@ -37,3 +46,10 @@
            state: present
        with_lines:
            - cat ../config/package-lists/recoup.list.binary
+    -  name: Install backports admin packages
+       apt:
+           name: "{{ item }}"
+           state: present
+           default_release: jessie-backports
+       with_lines: 
+           - cat ../config/package-lists/backports_administration.list.binary
