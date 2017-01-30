@@ -1,0 +1,12 @@
+---
+- hosts: "{{ hosts }}"
+  remote_user:  "{{ user }}"
+  become: True
+  tasks:
+    -  name: Set sources
+       copy:
+          src: ../config/includes.chroot/etc/fstab
+          dest: /etc/fstab
+          owner: root
+          group: root
+          mode: 0644
