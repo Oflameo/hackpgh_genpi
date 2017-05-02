@@ -59,3 +59,16 @@
            default_release: jessie-backports
        with_lines: 
            - cat ../config/package-lists/backports_administration.list.binary
+    -  name: Install x11vnc service
+       copy:
+           src: ../config/includes.chroot/etc/systemd/system/x11vnc.service
+           dest: /etc/systemd/system/x11vnc.service
+           owner: root
+           group: root
+           mode: 0755
+    -  name: Start and Enable x11vnc service
+       service: 
+           name: x11vnc
+           state: started
+           enabled: yes 
+

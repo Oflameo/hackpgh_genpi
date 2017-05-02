@@ -9,6 +9,7 @@ smbclient
 smplayer
 timidity-daemon
 vlc
+x11vnc
 xinit
 xfce4
 xfce4-power-manager

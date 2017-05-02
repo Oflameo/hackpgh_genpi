@@ -1,0 +1,19 @@
+---
+- hosts: "{{ hosts }}"
+  remote_user:  "{{ user }}"
+  become: True
+  tasks:
+    - name: Stop and Disable x11vnc service
+      service:  
+           name: x11vnc
+           state: stopped
+           enabled: no
+    - name: Purge x11vnc
+      apt: 
+           name: x11vnc
+           state: absent
+           purge: yes
+    - name: Remove unit file
+      file: 
+           state: absent
+           path: /etc/systemd/system/x11vnc.service

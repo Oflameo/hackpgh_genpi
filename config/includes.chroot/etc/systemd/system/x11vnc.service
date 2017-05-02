@@ -1,0 +1,14 @@
+[Unit]
+Description=VNC Server for X11
+Requires=display-manager.service
+After=display-manager.service
+
+[Service]
+Type=forking
+EnvironmentFile=/etc/environment
+ExecStart=/usr/bin/x11vnc -xkb -auth /var/run/lightdm/root/:0 -noxrecord -noxfixes -noxdamage -forever -bg -rfbport 5900 -oa /var/log/x11vnc.log -localhost
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
